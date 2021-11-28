@@ -6,3 +6,4 @@ employee.PartTime();
 employee.CaseStatement();
 employee.MonthlyWage();
 employee.Calculate();
+employee.compute();
