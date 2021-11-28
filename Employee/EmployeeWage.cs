@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace Employee
 {
-       public class EmployeeWage
-           {
-        public const int IS_PART_TIME = 1;
+    public class EmployeeWage
+    {
+     public const int IS_PART_TIME = 1;
         public const int IS_FULL_TIME = 2;
         public const int EMP_RATE_PER_HOUR = 20;
         public const int NUM_OF_WORKING_DAYS = 2;
-            //variable
-            int empHrs = 0;
+        //variable
+        int empHrs = 0;
         int empWage = 0;
         int totalEmpWage = 0;
-        
-
-        
-        public void Attendance()
+        int MAX_WORKING_HRS = 0;
+        int FULL_WORKING_HRS = 0;
+        int PART_WORKING_HRS = 0;
+        public void Attendance() 
         {
             Random rand = new Random();
             int rem = rand.Next() % 2;
@@ -33,26 +33,26 @@ namespace Employee
             }
 
         }
-       
-        
-            public double DailyWage()
-            {
-                Random random = new Random();
-                //Computation
-                int empCheck = random.Next(0, 2);
-                if (empCheck == IS_FULL_TIME)
-                {
-                    empHrs = 8;
-                }
-                else
-                {
-                    empHrs = 0;
-                }
-                empWage = empHrs * EMP_RATE_PER_HOUR;
-                Console.WriteLine("Emp Wage : " + empWage);
-                return empWage;
 
+
+        public double DailyWage()
+        {
+            Random random = new Random();
+            //Computation
+            int empCheck = random.Next(0, 2);
+            if (empCheck == IS_FULL_TIME)
+            {
+                empHrs = 8;
             }
+            else
+            {
+                empHrs = 0;
+            }
+            empWage = empHrs * EMP_RATE_PER_HOUR;
+            Console.WriteLine("Emp Wage : " + empWage);
+            return empWage;
+
+        }
         public void PartTime()
         {
             Random random = new Random();
@@ -115,9 +115,34 @@ namespace Employee
             }
             Console.WriteLine("Total Emp Wage : " + totalEmpWage);
         }
+        public void Calculate()
+        {
+            Random random = new Random();
+            for (int i = 0; i < NUM_OF_WORKING_DAYS; i++)
+                for (int j = 0; j < NUM_OF_WORKING_DAYS && empHrs < MAX_WORKING_HRS; i++)
+                {
+                    int empCheck = random.Next(0, 3);
+                    switch (empCheck)
+                    {
+                        case IS_FULL_TIME:
+                            this.empHrs = FULL_WORKING_HRS;
+                            this.empHrs += FULL_WORKING_HRS;
+                            break;
+                        case IS_PART_TIME:
+                            this.empHrs = PART_WORKING_HRS;
+                            this.empHrs += PART_WORKING_HRS;
+                            break;
+                        default:
+                            this.empHrs = 0;
+                            this.empHrs += 0;
+                            break;
+                    }
+                }
+
+
+
+        }
+
+        
     }
-
-
-
-    
 }
