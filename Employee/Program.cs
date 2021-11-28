@@ -7,3 +7,4 @@ employee.CaseStatement();
 employee.MonthlyWage();
 employee.Calculate();
 employee.compute();
+employee.MuitipleCompany();
